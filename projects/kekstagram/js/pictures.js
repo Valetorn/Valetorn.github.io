@@ -4,7 +4,7 @@ window.pictures = (function () {
   var pictureTemplate = document.querySelector('#picture-template');
   var picturesContainer = document.querySelector('.pictures');
   var filters = document.querySelector('.filters');
-  var DATA_URL = 'https://intensive-javascript-server-myophkugvq.now.sh/kekstagram/data';
+  var DATA_URL = 'https://intensive-javascript-server-pedmyactpq.now.sh/kekstagram/data';
 
   var getData = function (data) {
     setDataPictures(data);
