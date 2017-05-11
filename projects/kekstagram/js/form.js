@@ -5,6 +5,7 @@ var uploadSelectImage = document.getElementById('upload-select-image');
 var uploadFile = document.getElementById('upload-file');
 var uploadFormCancel = uploadOverlay.querySelector('.upload-form-cancel');
 var filterImagePreview = document.querySelector('.filter-image-preview');
+var uploadFilterPreview = document.querySelectorAll('.upload-filter-preview');
 var uploadFilterControls = document.querySelector('.upload-filter-controls');
 var uploadResizeControls = uploadOverlay.querySelector('.upload-resize-controls');
 var uploadFilter = document.getElementById('upload-filter');
@@ -62,8 +63,20 @@ window.applyFilterRange = function (filterRangeValue) {
 var adjustScale = function (scale) {
   filterImagePreview.style.transform = 'scale(' + parseInt(scale, 10) / 100 + ')';
 };
+var readUrl = function (input) {
+  var reader = new FileReader();
+  reader.onload = function (evt) {
+    var dataUrl = evt.target.result;
+    filterImagePreview.src = dataUrl;
+    for (var i = 0; i < uploadFilterPreview.length; i++) {
+      uploadFilterPreview[i].style.backgroundImage = 'url(' + dataUrl + ')';
+    }
+  };
+  reader.readAsDataURL(input.files[0]);
+};
 
 uploadFile.addEventListener('change', function () {
+  readUrl(this);
   openUploadOverlay();
 });
 uploadFormCancel.addEventListener('click', function () {
