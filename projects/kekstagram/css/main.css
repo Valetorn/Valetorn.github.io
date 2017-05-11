@@ -110,7 +110,7 @@ body {
 }
 
 .upload-filter-preview {
-  background-image: url('../img/upload-default-image.png');
+  /*background-image: url('../img/upload-default-image.png');*/
   background-position: center;
   background-repeat: no-repeat;
 }
